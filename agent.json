@@ -10,7 +10,12 @@
     "googleAssistantCompatible": true,
     "project": "",
     "welcomeIntentSignInRequired": false,
-    "startIntents": [],
+    "startIntents": [
+      {
+        "intentId": "df96b721-49ae-485c-83b7-89d0596a3e5f",
+        "signInRequired": false
+      }
+    ],
     "systemIntents": [],
     "endIntentIds": [],
     "oAuthLinking": {
@@ -33,10 +38,12 @@
   "webhook": {
     "url": "https://us-central1-actions-codelab-5dc14.cloudfunctions.net/dialogflowFirebaseFulfillment",
     "username": "",
-    "headers": {},
+    "headers": {
+      "": ""
+    },
     "available": true,
     "useForDomains": false,
-    "cloudFunctionsEnabled": true,
+    "cloudFunctionsEnabled": false,
     "cloudFunctionsInitialized": true
   },
   "isPrivate": true,
