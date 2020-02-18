@@ -1,12 +1,11 @@
 {
-  "id": "2354264f-a78c-4370-84f6-bdf1e63bd40f",
-  "name": "Default Welcome Intent",
+  "id": "bb646bbb-4069-4c3f-92c6-19e8f49e447a",
+  "name": "actions_intent_PERMISSION",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "action": "input.welcome",
       "affectedContexts": [],
       "parameters": [],
       "messages": [
@@ -14,7 +13,7 @@
           "type": 0,
           "lang": "en",
           "condition": "",
-          "speech": "Welcome! What is your favorite color?"
+          "speech": []
         }
       ],
       "defaultResponsePlatforms": {},
@@ -27,7 +26,7 @@
   "fallbackIntent": false,
   "events": [
     {
-      "name": "WELCOME"
+      "name": "actions_intent_PERMISSION"
     }
   ],
   "conditionalResponses": [],
