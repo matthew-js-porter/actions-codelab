@@ -1,31 +1,19 @@
 {
-  "id": "df96b721-49ae-485c-83b7-89d0596a3e5f",
-  "name": "favorite color",
+  "id": "a2e99827-0155-4193-ab59-4d0797e32644",
+  "name": "favorite fake color",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [
-        {
-          "name": "favoritecolor-followup",
-          "parameters": {},
-          "lifespan": 2
-        }
-      ],
+      "affectedContexts": [],
       "parameters": [
         {
-          "id": "5a474380-2652-4489-a4ce-40fd8f6657b8",
-          "required": true,
-          "dataType": "@sys.color",
-          "name": "color",
-          "value": "$color",
-          "prompts": [
-            {
-              "lang": "en",
-              "value": "What\u0027s your favorite color?"
-            }
-          ],
+          "id": "e08f5d88-9658-4609-8ccf-778915e0cb26",
+          "required": false,
+          "dataType": "@fakeColor",
+          "name": "fakeColor",
+          "value": "$fakeColor",
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],

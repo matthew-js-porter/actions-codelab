@@ -1,0 +1,9 @@
+{
+  "id": "6d624147-218a-4dfa-885f-38bce3352d4b",
+  "name": "fakeColor",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

@@ -14,7 +14,11 @@
 'use strict';
 
 // Import the Dialogflow module from the Actions on Google client library.
-const {dialogflow, Permission, Suggestions} = require('actions-on-google');
+const {
+  dialogflow,
+   Permission,
+    Suggestions,
+     BasicCard} = require('actions-on-google');
 
 // Import the firebase-functions package for deployment.
 const functions = require('firebase-functions');
@@ -23,20 +27,24 @@ const functions = require('firebase-functions');
 const app = dialogflow({debug: true});
 
 // Handle the Dialogflow intent named 'favorite color'.
-// The intent collects a parameter named 'color'
+// The intent collects a parameter named 'color'.
 app.intent('favorite color', (conv, {color}) => {
   const luckyNumber = color.length;
   const audioSound = 'https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg';
   if (conv.data.userName) {
     // If we collected user name previously, address them by name and use SSML
     // to embed an audio snippet in the response.
-    conv.close(`<speak>${conv.data.userName}, your lucky number is ` +
-      `${luckyNumber}.<audio src="${audioSound}"></audio></speak>`);
+    conv.ask(`<speak>${conv.data.userName}, your lucky number is ` +
+      `${luckyNumber}.<audio src="${audioSound}"></audio> ` +
+      `Would you like to hear some fake colors?</speak>`);
+    conv.ask(new Suggestions('Yes', 'No'));
   } else {
-    conv.close(`<speak>Your lucky number is ${luckyNumber}.` +
-      `<audio src="${audioSound}"></audio></speak>`);
+    conv.ask(`<speak>Your lucky number is ${luckyNumber}.` +
+      `<audio src="${audioSound}"></audio> ` +
+      `Would you like to hear some fake colors?</speak>`);
+    conv.ask(new Suggestions('Yes', 'No'));
   }
- });
+});
 
 // Handle the Dialogflow intent named 'Default Welcome Intent'.
 app.intent('Default Welcome Intent', (conv) => {
@@ -57,6 +65,45 @@ app.intent('actions_intent_PERMISSION', (conv, params, permissionGranted) => {
     conv.ask(`Thanks, ${conv.data.userName}. What's your favorite color?`);
     conv.ask(new Suggestions('Blue', 'Red', 'Green'));
   }
+});
+
+// Define a mapping of fake color strings to basic card objects.
+const colorMap = {
+  'indigo taco': {
+    title: 'Indigo Taco',
+    text: 'Indigo Taco is a subtle bluish tone.',
+    image: {
+      url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDN1JRbF9ZMHZsa1k/style-color-uiapplication-palette1.png',
+      accessibilityText: 'Indigo Taco Color',
+    },
+    display: 'WHITE',
+  },
+  'pink unicorn': {
+    title: 'Pink Unicorn',
+    text: 'Pink Unicorn is an imaginative reddish hue.',
+    image: {
+      url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDbFVfTXpoaEE5Vzg/style-color-uiapplication-palette2.png',
+      accessibilityText: 'Pink Unicorn Color',
+    },
+    display: 'WHITE',
+  },
+  'blue grey coffee': {
+    title: 'Blue Grey Coffee',
+    // eslint-disable-next-line max-len
+    text: 'Calling out to rainy days, Blue Grey Coffee brings to mind your favorite coffee shop.',
+    image: {
+      url: 'https://storage.googleapis.com/material-design/publish/material_v_12/assets/0BxFyKV4eeNjDZUdpeURtaTUwLUk/style-color-colorsystem-gray-secondary-161116.png',
+      accessibilityText: 'Blue Grey Coffee Color',
+    },
+    display: 'WHITE',
+  },
+};
+
+// Handle the Dialogflow intent named 'favorite fake color'.
+// The intent collects a parameter named 'fakeColor'.
+app.intent('favorite fake color', (conv, {fakeColor}) => {
+  // Present user with the corresponding basic card and end the conversation.
+  conv.close(`Here's the color`, new BasicCard(colorMap[fakeColor]));
 });
 
 // Set the DialogflowApp object to handle the HTTPS POST request.
