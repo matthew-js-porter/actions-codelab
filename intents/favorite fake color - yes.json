@@ -1,0 +1,36 @@
+{
+  "id": "67e6fb07-b8bb-461f-b06b-fca5c72ea676",
+  "parentId": "a2e99827-0155-4193-ab59-4d0797e32644",
+  "rootParentId": "a2e99827-0155-4193-ab59-4d0797e32644",
+  "name": "favorite fake color - yes",
+  "auto": true,
+  "contexts": [
+    "favoritefakecolor-followup"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "favoritefakecolor.favoritefakecolor-yes",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}
